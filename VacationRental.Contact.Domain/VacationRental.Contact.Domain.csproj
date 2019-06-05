@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VacationRental.Contact.DataPersistence\VacationRental.Contact.DataRepository.csproj" />
+    <ProjectReference Include="..\VacationRental.Contact.Domain.Model\VacationRental.Contact.Domain.Common.csproj" />
+  </ItemGroup>
+
+</Project>

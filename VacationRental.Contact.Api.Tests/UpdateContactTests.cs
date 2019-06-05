@@ -3,8 +3,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using VacationRental.Contact.Api.Controllers;
-using VacationRental.Contact.Api.Models;
 using Xunit;
 
 namespace VacationRental.Contact.Api.Tests
@@ -44,7 +42,7 @@ namespace VacationRental.Contact.Api.Tests
             {
                 Assert.True(getResponse.IsSuccessStatusCode);
 
-                var returnedData = await getResponse.Content.ReadAsAsync<ContactViewModel>();
+                var returnedData = await getResponse.Content.ReadAsAsync<Domain.Common.Model.Contact>();
                 Assert.Equal(request.Forename, returnedData.Forename);
                 Assert.Equal(request.Surname, returnedData.Surname);
                 Assert.Equal(request.Phone, returnedData.Phone);

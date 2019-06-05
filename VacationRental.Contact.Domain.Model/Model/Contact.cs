@@ -1,6 +1,6 @@
-﻿namespace VacationRental.Contact.Api.Models
+﻿namespace VacationRental.Contact.Domain.Common.Model
 {
-    public class ContactViewModel
+    public class Contact
     {
         public string Forename { get; set; }
         public string Surname { get; set; }

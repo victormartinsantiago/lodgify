@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using VacationRental.Contact.Api.Controllers;
-using VacationRental.Contact.Api.Models;
 
 namespace VacationRental.Contact.Api
 {
@@ -26,7 +24,7 @@ namespace VacationRental.Contact.Api
 
             services.AddSwaggerGen(opts => opts.SwaggerDoc("v1", new Info { Title = "Vacation rental contact information", Version = "v1" }));
 
-            services.AddSingleton<IDictionary<int, ContactViewModel>>(new Dictionary<int, ContactViewModel>());
+            services.AddSingleton<IDictionary<int, Domain.Common.Model.Contact >>(new Dictionary<int, Domain.Common.Model.Contact >());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
