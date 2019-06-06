@@ -13,10 +13,10 @@
 
         public static IServiceCollection AddDataRepository(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddDbContext<ContactRepository>(options =>
+            serviceCollection.AddDbContext<RentalRepository>(options =>
                 options.UseInMemoryDatabase(DatabaseName));
 
-            return serviceCollection.AddTransient<IContactRepository, ContactRepository>();
+            return serviceCollection.AddSingleton<IRentalRepository, RentalRepository>();
         }
     }
 }

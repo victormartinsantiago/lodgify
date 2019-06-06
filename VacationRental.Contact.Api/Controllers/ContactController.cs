@@ -1,29 +1,40 @@
 ﻿namespace VacationRental.Contact.Api.Controllers
 {
-    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Domain.Abstractions;
+    using Domain.Common.Model;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
 
     [Route("api/v1/vacationrental/{rentalId:int}/contact")]
     [ApiController]
     public class ContactController : ControllerBase
     {
-        private readonly IDictionary<int, Domain.Common.Model.Contact> _state;
+        private readonly IContactService _contactService;
+        private readonly ILogger<ContactController> _logger;
 
-        public ContactController(IDictionary<int, Domain.Common.Model.Contact> state)
+        public ContactController(
+            ILoggerFactory loggerFactory,
+            IContactService contactService)
         {
-            _state = state;
+            _contactService = contactService;
+            _logger = loggerFactory.CreateLogger<ContactController>();
         }
 
         [HttpGet]
-        public Domain.Common.Model.Contact Get([FromRoute] int rentalId)
+        public async Task<Contact> Get([FromRoute] int rentalId)
         {
-            return _state[rentalId];
+            _logger.LogInformation($"Fetching contact for rental with ID '{rentalId}'");
+
+            return await _contactService.GetDefaultContactByRentalIdAsync(rentalId);
         }
 
         [HttpPut]
-        public void Put([FromRoute] int rentalId, [FromBody] Domain.Common.Model.Contact model)
+        public async Task Put([FromRoute] int rentalId, [FromBody] Contact model)
         {
-            _state[rentalId] = model;
+            _logger.LogInformation($"Updating contact for rental with ID '{rentalId}'");
+
+            await _contactService.AddOrUpdateDefaultContactAsync(rentalId, model);
         }
     }
 }
