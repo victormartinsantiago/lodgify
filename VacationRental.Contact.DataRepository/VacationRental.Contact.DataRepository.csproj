@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VacationRental.Contact.Domain.Model\VacationRental.Contact.Domain.Common.csproj" />
+    <ProjectReference Include="..\VacationRental.Contact.Domain.Common\VacationRental.Contact.Domain.Common.csproj" />
   </ItemGroup>
 
 </Project>

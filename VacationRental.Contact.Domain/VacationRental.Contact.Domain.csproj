@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VacationRental.Contact.DataPersistence\VacationRental.Contact.DataRepository.csproj" />
-    <ProjectReference Include="..\VacationRental.Contact.Domain.Model\VacationRental.Contact.Domain.Common.csproj" />
+    <ProjectReference Include="..\VacationRental.Contact.DataRepository\VacationRental.Contact.DataRepository.csproj" />
+    <ProjectReference Include="..\VacationRental.Contact.Domain.Common\VacationRental.Contact.Domain.Common.csproj" />
   </ItemGroup>
 
 </Project>

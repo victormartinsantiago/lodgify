@@ -30,7 +30,7 @@
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseExceptionMiddleware();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
             app.UseSwagger();
             app.UseSwaggerUI(opts => opts.SwaggerEndpoint("/swagger/v1/swagger.json", "Contact v1"));
 

@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRental.Contact.Api.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationRental.Contact.Domain", "VacationRental.Contact.Domain\VacationRental.Contact.Domain.csproj", "{B35BADE8-9950-4D0D-BEB4-7DFEF58BDCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationRental.Contact.DataRepository", "VacationRental.Contact.DataPersistence\VacationRental.Contact.DataRepository.csproj", "{CB1B0A6C-8E8A-4506-95C0-9B30F588CCD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationRental.Contact.DataRepository", "VacationRental.Contact.DataRepository\VacationRental.Contact.DataRepository.csproj", "{CB1B0A6C-8E8A-4506-95C0-9B30F588CCD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationRental.Contact.Domain.Common", "VacationRental.Contact.Domain.Model\VacationRental.Contact.Domain.Common.csproj", "{CFF76541-08CB-4C42-B0A6-2269E41086FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationRental.Contact.Domain.Common", "VacationRental.Contact.Domain.Common\VacationRental.Contact.Domain.Common.csproj", "{CFF76541-08CB-4C42-B0A6-2269E41086FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
