@@ -33,6 +33,10 @@
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(opts => opts.SwaggerEndpoint("/swagger/v1/swagger.json", "Contact v1"));
+
+            // Uncomment this line if using a full SqlServer database to ensure the sql
+            // schema gets generated the first time on the target database.
+            // app.ApplicationServices.EnsureDatabaseCreated();
         }
     }
 }
