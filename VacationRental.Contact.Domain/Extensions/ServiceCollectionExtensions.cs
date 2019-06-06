@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using VacationRental.Contact.DataRepository.Extensions;
-using VacationRental.Contact.Domain.Abstractions;
-using VacationRental.Contact.Domain.Services;
-
-namespace VacationRental.Contact.Domain.Extensions
+﻿namespace VacationRental.Contact.Domain.Extensions
 {
+    using Abstractions;
+    using Microsoft.Extensions.DependencyInjection;
+    using Services;
+    using VacationRental.Contact.DataRepository.Extensions;
+
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddContactService(this IServiceCollection serviceCollection)

@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using System;
-using System.Net.Http;
-using Xunit;
-
-namespace VacationRental.Contact.Api.Tests
+﻿namespace VacationRental.Contact.Api.Tests
 {
+    using System;
+    using System.Net.Http;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.TestHost;
+    using Xunit;
+
     [CollectionDefinition("Integration")]
     public class IntegrationFixture : IDisposable, ICollectionFixture<IntegrationFixture>
     {
         private readonly TestServer _server;
-
-        public HttpClient Client { get; }
-        public Random Random { get; } = new Random();
 
         public IntegrationFixture()
         {
@@ -20,6 +17,10 @@ namespace VacationRental.Contact.Api.Tests
 
             Client = _server.CreateClient();
         }
+
+        public HttpClient Client { get; }
+
+        public Random Random { get; } = new Random();
 
         public void Dispose()
         {

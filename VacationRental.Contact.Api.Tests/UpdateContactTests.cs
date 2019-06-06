@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace VacationRental.Contact.Api.Tests
+﻿namespace VacationRental.Contact.Api.Tests
 {
+    using System;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Xunit;
+
     [Collection("Integration")]
     public class UpdateContactTests
     {
@@ -29,7 +29,7 @@ namespace VacationRental.Contact.Api.Tests
                 Surname = "Gordan",
                 Phone = "1800-SPEED-ING",
                 NativeLanguage = "English",
-                OtherSpokenLanguages = new[] {"Spanish"},
+                OtherSpokenLanguages = new[] { "Spanish" },
                 AboutMe = "Fastest man alive"
             };
 

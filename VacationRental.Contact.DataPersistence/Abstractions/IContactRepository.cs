@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace VacationRental.Contact.DataRepository.Abstractions
+﻿namespace VacationRental.Contact.DataRepository.Abstractions
 {
+    using Microsoft.EntityFrameworkCore;
+
     public interface IContactRepository
     {
         DbSet<Domain.Common.Model.Contact> Contacts { get; set; }

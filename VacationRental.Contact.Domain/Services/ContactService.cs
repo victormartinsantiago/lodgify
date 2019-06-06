@@ -1,8 +1,8 @@
-﻿using VacationRental.Contact.DataRepository.Abstractions;
-using VacationRental.Contact.Domain.Abstractions;
-
-namespace VacationRental.Contact.Domain.Services
+﻿namespace VacationRental.Contact.Domain.Services
 {
+    using Abstractions;
+    using VacationRental.Contact.DataRepository.Abstractions;
+
     public class ContactService : IContactService
     {
         private readonly IContactRepository _contactRepository;

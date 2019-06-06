@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-
-namespace VacationRental.Contact.Api.Controllers
+﻿namespace VacationRental.Contact.Api.Controllers
 {
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/v1/vacationrental/{rentalId:int}/contact")]
     [ApiController]
     public class ContactController : ControllerBase

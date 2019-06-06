@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
-
-namespace VacationRental.Contact.Api
+﻿namespace VacationRental.Contact.Api
 {
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Swashbuckle.AspNetCore.Swagger;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -24,7 +24,7 @@ namespace VacationRental.Contact.Api
 
             services.AddSwaggerGen(opts => opts.SwaggerDoc("v1", new Info { Title = "Vacation rental contact information", Version = "v1" }));
 
-            services.AddSingleton<IDictionary<int, Domain.Common.Model.Contact >>(new Dictionary<int, Domain.Common.Model.Contact >());
+            services.AddSingleton<IDictionary<int, Domain.Common.Model.Contact>>(new Dictionary<int, Domain.Common.Model.Contact>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

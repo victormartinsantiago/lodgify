@@ -1,11 +1,11 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace VacationRental.Contact.Api.Tests
+﻿namespace VacationRental.Contact.Api.Tests
 {
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Xunit;
+
     [Collection("Integration")]
     public class GetContactTests
     {

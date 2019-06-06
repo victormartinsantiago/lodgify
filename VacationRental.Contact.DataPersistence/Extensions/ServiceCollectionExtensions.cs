@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using VacationRental.Contact.DataRepository.Abstractions;
-using VacationRental.Contact.DataRepository.Repositories;
-
-namespace VacationRental.Contact.DataRepository.Extensions
+﻿namespace VacationRental.Contact.DataRepository.Extensions
 {
+    using Abstractions;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Repositories;
+
     public static class ServiceCollectionExtensions
     {
         private const string DatabaseEnvironmentVariable = "database";
@@ -13,7 +13,7 @@ namespace VacationRental.Contact.DataRepository.Extensions
 
         public static IServiceCollection AddDataRepository(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddDbContext<ContactRepository>(options => 
+            serviceCollection.AddDbContext<ContactRepository>(options =>
                 options.UseInMemoryDatabase(DatabaseName));
 
             return serviceCollection.AddTransient<IContactRepository, ContactRepository>();
