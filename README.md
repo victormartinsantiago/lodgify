@@ -1,38 +1,18 @@
-# Backend C# developer project
+#  Readme
 
-## Background
+## 1. Database Choice
 
-Here at Lodgify it is important to us that holiday-goers can keep in contact with the host of the vacation rental they're enjoying should anything not go according to plan. For this reason we provide our users with the ability to update their contact information to display on the website we create for them.
+In order to facilitate development and make the process of running the solution easier, the service is configured to use an in memory implementation of Entity Framework:  `Microsoft.EntityFrameworkCore.InMemory`  This means the data will only be kept while the service is up and running. 
 
-## The API
+The service can, nevertheless, be reconfigured the use a SqlServer implementation `Microsoft.EntityFrameworkCore.SqlServer`:
 
-This project includes an API that can be consumed in order to update the aforementioned information about the host of a vacation rental. It contains a single controller (`ContactController`) and the following endpoints are provided
+ - **BuildAndRun.ps1**: Update the environment variable `CONNECTION_STRING` with the approriate connection string targeting a newly created SqlServer database
+ - **VacationRental.Contact.Api/Properties/launchsettings.json**: Update the environment variable `CONNECTION_STRING` with the approriate connection string targeting a newly created SqlServer database.
+ - **VacationRental.Contact.Api/Startup.cs**: Uncomment the line `app.ApplicationServices.EnsureDatabaseCreated()` so that the database schema gets populated on the target database when the service starts up.
+ - **VacationRental.Contact.Domain/Extensions/ServiceCollectionExtensions.cs**: Comment out the line `serviceCollection.AddInMemoryDataRepository()` and uncomment the line `serviceCollection.AddSqlServerDataRepository()`. This will configure the DbContext to use SqlServer and read the connection string from the environment variable `CONNECTION_STRING`
 
-- `GET /api/v1/vacationrental/{id}/contact` - to retrieve the contact information for the given vacation rental id
-- `PUT /api/v1/vacationrental/{id}/contact` - to update the contact information for the given vacation rental id
-- `GET /swagger` - The swagger documentation for the API (will open on process run)
+## 2. Running the service as a container
 
-As it is presented the information for the contacts is only stored in memory and therefore we lose all information when the service restarts.
+A `Dockerfile` is provided at the root level that builds a Docker image for the `VacationRental.Contact.Api` project. A multistage approach is used so that the resulting image is as light as possible. 
 
-## The task
-
-- There are two failing tests making HTTP calls to the API that need to be fixed
-  - The first expects a 404 Not Found response when retrieving the contact for a vacation rental does not exist
-  - The other expects a 400 Bad Request response when trying to update a contact without a phone number
-- Once these bugs are fixed we need to incorporate some persistence. Please make sure that a host's contact information can be persisted between deployments of this service.
-- **Optional** - We would like this service to be deployed as a Docker container. Please include a Dockerfile that will create the container image
-
-### What we are looking for
-
-- How you define a basic architecture for this feature (and hypothetical next ones)
-- How you test the correctness of your solution
-- How you model these operations in the code
-
-### Restrictions
-
-- Please do not modify the API contract
-  - Do not rename the model's properties
-  - Do not modify the API path - it must remain `/api/v1/vacationrental/{rentalId}/contact`
-  - Removing/changing the injected dependencies is allowed
-- Only use MSSQL/PostgreSQL for persistence (using Entity Framework or Dapper)
-- If there is something that you want us to notice in your approach please add a text file describing it
+A powershell script `BuildAndRun.ps1` is also provided. This script will trigger the Docker image creation and it will spin up a new container after a successful build. The script is parametrized for convience.

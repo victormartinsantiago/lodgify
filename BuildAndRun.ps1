@@ -22,7 +22,7 @@ if (-not $?) { throw "Docker image could not be generated" }
 
 Write-Host "Starting container on port $HostPort"
 
-docker run -d -p $HostPort`:$ContainerPort $ImageName`:$Tag
+docker run -d -e CONNECTION_STRING='' -p $HostPort`:$ContainerPort $ImageName`:$Tag
 
 Write-Host "Container started"
 Write-Host "App is running on http://localhost:$HostPort/swagger"
