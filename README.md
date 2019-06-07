@@ -1,6 +1,10 @@
 #  Readme
 
-## 1. Database Choice
+## 1. Data Model
+
+To cater for future changes, I've modeled the domain so that one rental may have more than one contact. Current implementation processes a single contact (default contact).
+
+## 2. Database Choice
 
 In order to facilitate development and make the process of running the solution easier, the service is configured to use an in memory implementation of Entity Framework:  `Microsoft.EntityFrameworkCore.InMemory`  This means the data will only be kept while the service is up and running. 
 
@@ -11,7 +15,7 @@ The service can, nevertheless, be reconfigured the use a SqlServer implementatio
  - **VacationRental.Contact.Api/Startup.cs**: Uncomment the line `app.ApplicationServices.EnsureDatabaseCreated()` so that the database schema gets populated on the target database when the service starts up.
  - **VacationRental.Contact.Domain/Extensions/ServiceCollectionExtensions.cs**: Comment out the line `serviceCollection.AddInMemoryDataRepository()` and uncomment the line `serviceCollection.AddSqlServerDataRepository()`. This will configure the DbContext to use SqlServer and read the connection string from the environment variable `CONNECTION_STRING`
 
-## 2. Running the service as a container
+## 3. Running the service as a container
 
 A `Dockerfile` is provided at the root level that builds a Docker image for the `VacationRental.Contact.Api` project. A multistage approach is used so that the resulting image is as light as possible. 
 
