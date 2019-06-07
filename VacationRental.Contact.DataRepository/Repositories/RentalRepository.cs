@@ -3,6 +3,7 @@
     using System.Threading.Tasks;
     using Abstractions;
     using Microsoft.EntityFrameworkCore;
+    using Model;
 
     public class RentalRepository : DbContext, IRentalRepository
     {
@@ -11,9 +12,9 @@
         {
         }
 
-        public DbSet<Model.Rental> Rentals { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
 
-        public DbSet<Model.Contact> Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         public new void SaveChanges()
         {
@@ -27,11 +28,14 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Model.Rental>()
+            modelBuilder.Entity<Rental>()
                 .HasMany(c => c.Contacts)
                 .WithOne(e => e.Rental);
 
-            modelBuilder.Entity<Model.Contact>()
+            // string[] cannot be saved directly to the DB.
+            // We need to map it to a backing field of type string
+            // were tokens are split by a delimiter
+            modelBuilder.Entity<Contact>()
                 .Property<string>("OtherSpokenLanguagesCollection")
                 .HasField("_otherSpokenLanguages");
         }

@@ -2,12 +2,13 @@
 {
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
+    using Model;
 
     public interface IRentalRepository
     {
-        DbSet<Model.Rental> Rentals { get; set; }
+        DbSet<Rental> Rentals { get; set; }
 
-        DbSet<Model.Contact> Contacts { get; set; }
+        DbSet<Contact> Contacts { get; set; }
 
         void SaveChanges();
 

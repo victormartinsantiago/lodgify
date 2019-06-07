@@ -57,7 +57,7 @@
             if (rental == null)
             {
                 // Dummy rental so that contacts can be appended. This won't happen in a real scenario.
-                // We would be throwing a NotFoundException
+                // We would likely be throwing a NotFoundException
                 _logger.LogInformation($"Adding new rental '{rentalId}'");
 
                 var trackingEntity = await _rentalRepository
