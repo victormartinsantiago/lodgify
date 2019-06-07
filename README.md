@@ -19,4 +19,4 @@ The service can, nevertheless, be reconfigured the use a SqlServer implementatio
 
 A `Dockerfile` is provided at the root level that builds a Docker image for the `VacationRental.Contact.Api` project. A multistage approach is used so that the resulting image is as light as possible. 
 
-A powershell script `BuildAndRun.ps1` is also provided. This script will trigger the Docker image creation and it will spin up a new container after a successful build. The script is parametrized for convience.
+A powershell script `BuildAndRun.ps1` is also provided. This script will trigger the Docker image creation and it will spin up a new container after a successful build. The script is parametrized for convenience.
