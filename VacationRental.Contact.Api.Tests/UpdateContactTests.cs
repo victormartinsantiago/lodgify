@@ -1,6 +1,7 @@
 ﻿namespace VacationRental.Contact.Api.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -30,7 +31,11 @@
                 Phone = "1800-SPEED-ING",
                 NativeLanguage = "English",
                 OtherSpokenLanguages = new[] { "Spanish" },
-                AboutMe = "Fastest man alive"
+                ////AboutMe = new[] { new { Language = "Spanish", Text = "Whatever" } },
+                AboutMe = new Dictionary<string, string>
+                {
+                    { "Spanish", "Whatever" }
+                }
             };
 
             using (var updateResponse = await _client.PutAsJsonAsync($"/api/v1/vacationrental/{vacationRentalId}/contact", request))
@@ -47,8 +52,11 @@
                 Assert.Equal(request.Surname, returnedData.Surname);
                 Assert.Equal(request.Phone, returnedData.Phone);
                 Assert.Equal(request.NativeLanguage, returnedData.NativeLanguage);
-                Assert.Equal(request.OtherSpokenLanguages.Single(), returnedData.OtherSpokenLanguages.Single());
-                Assert.Equal(request.AboutMe, returnedData.AboutMe);
+
+                foreach (var aboutMeItem in request.AboutMe)
+                {
+                    Assert.True(returnedData.AboutMe.ContainsKey(aboutMeItem.Key), $"There should be an about me for language {aboutMeItem.Key}");
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿namespace VacationRental.Contact.Domain.Common.Model
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,11 +22,13 @@
         [Required]
         public string NativeLanguage { get; set; }
 
-        [NotMapped]
-        [Required]
-        public string[] OtherSpokenLanguages { get; set; }
+        ////[NotMapped]
+        ////[Required]
+        ////public string[] OtherSpokenLanguages { get; set; }
 
-        [Required]
-        public string AboutMe { get; set; }
+        ////[Required]
+        ////public string AboutMe { get; set; }
+
+        public Dictionary<string, string> AboutMe { get; set; } = new Dictionary<string, string>();
     }
 }

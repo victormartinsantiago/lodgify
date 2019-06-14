@@ -1,5 +1,6 @@
 ﻿namespace VacationRental.Contact.DataRepository.Model
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,17 +27,19 @@
         [Required]
         public string NativeLanguage { get; set; }
 
-        [NotMapped]
-        [Required]
-        public string[] OtherSpokenLanguages
-        {
-            get => _otherSpokenLanguages.Split(Delimiter);
+        ////[NotMapped]
+        ////[Required]
+        ////public string[] OtherSpokenLanguages
+        ////{
+        ////    get => _otherSpokenLanguages.Split(Delimiter);
 
-            set => _otherSpokenLanguages = string.Join($"{Delimiter}", value);
-        }
+        ////    set => _otherSpokenLanguages = string.Join($"{Delimiter}", value);
+        ////}
 
-        [Required]
-        public string AboutMe { get; set; }
+        ////[Required]
+        ////public string AboutMe { get; set; }
+
+        public ICollection<AboutMe> AboutMe { get; set; } = new List<AboutMe>();
 
         public Rental Rental { get; set; }
 
@@ -46,7 +49,6 @@
             Surname = contact.Surname;
             Phone = contact.Phone;
             NativeLanguage = contact.NativeLanguage;
-            OtherSpokenLanguages = contact.OtherSpokenLanguages;
             AboutMe = contact.AboutMe;
         }
     }
